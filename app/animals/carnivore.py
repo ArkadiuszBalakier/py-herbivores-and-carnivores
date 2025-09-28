@@ -4,8 +4,12 @@ from app.animals.herbivore import Herbivore
 
 class Carnivore(Animal):
 
-    def bite(self, other):
+    @staticmethod
+    def bite(other):
         if isinstance(other, Herbivore):
             if not other.hidden:
                 other.health -= 50
-                Animal.heal_check(other)
+                if other.health <= 0:
+                    for animal in Animal.alive:
+                        if animal.name == other.name:
+                            Animal.alive.remove(animal)

@@ -1,17 +1,14 @@
-
 class Animal:
     alive = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, health: int = 100, hidden:  bool = False) -> None:
         self.name = name
-        self.health = 100
-        self.hidden = False
-        animal = {"name": self.name, "health": self.health, "hidden": self.hidden}
-        Animal.alive.append(animal)
+        self.health = health
+        self.hidden = hidden
+        Animal.alive.append(self)
 
-    @staticmethod
-    def heal_check(other) -> None:
-            if other.health <= 0:
-                for animal in Animal.alive:
-                    if animal.name == other.name:
-                        Animal.alive.remove(animal)
+    def __repr__(self) -> str | None:
+        for animal in Animal.alive:
+            representation_of_animal = f"{{Name: {animal.name}, Health: {animal.health}, Hidden: {animal.hidden}}}"
+            return representation_of_animal
+        return None
