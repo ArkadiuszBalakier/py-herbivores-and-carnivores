@@ -2,5 +2,5 @@ from app.animals.animal import Animal
 
 
 class Herbivore(Animal):
-    def hide(self):
+    def hide(self) -> None:
         self.hidden = not self.hidden
