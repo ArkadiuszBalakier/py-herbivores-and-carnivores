@@ -5,7 +5,7 @@ from app.animals.herbivore import Herbivore
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(other: Herbivore):
+    def bite(other: Herbivore) -> None:
         if isinstance(other, Herbivore):
             if not other.hidden:
                 other.health -= 50
